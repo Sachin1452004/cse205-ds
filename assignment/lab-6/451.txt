@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+        map<char,int>m;
+        priority_queue<pair<int,char>>maxH;
+        string ans;
+        for(int i=0;i<s.size();i++){
+            m[s[i]]++;
+        }
+
+        for(auto it:m){
+            maxH.push({it.second, it.first});
+        }
+
+        while(maxH.size()>0){
+            int freq= maxH.top().first;
+            char ch=maxH.top().second;
+            while(freq --){
+                ans.push_back(ch);
+            }
+            maxH.pop();
+        }
+        return ans;
+    }
+};
